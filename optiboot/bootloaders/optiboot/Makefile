@@ -493,6 +493,17 @@ atmega328_pro8_isp: LFUSE ?= FF
 atmega328_pro8_isp: EFUSE ?= 05
 atmega328_pro8_isp: isp
 
+bean: CHIP = atmega328
+bean:
+	$(MAKE) $(CHIP) AVR_FREQ=8000000L LED_START_FLASHES=0
+	mv $(PROGRAM)_$(CHIP).hex $(PROGRAM)_BEAN.hex
+	mv $(PROGRAM)_$(CHIP).lst $(PROGRAM)_BEAN.lst
+bplus: CHIP = atmega328
+bplus:
+	$(MAKE) $(CHIP) AVR_FREQ=16000000L LED_START_FLASHES=0
+	mv $(PROGRAM)_$(CHIP).hex $(PROGRAM)_BPLUS.hex
+	mv $(PROGRAM)_$(CHIP).lst $(PROGRAM)_BPLUS.lst
+
 #
 # Include additional platforms
 include Makefile.extras
